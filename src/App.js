@@ -5,6 +5,7 @@ import Home  from './components/Home';
 import NuestrosAutos from './components/NuestrosAutos';
 import Contacto from './components/Contacto';
 import DetalleAuto  from './components/DetalleAuto';
+import Buscador from './components/Buscador';
 
 const App = () => {
   return (
@@ -12,14 +13,11 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Menu />}>
         < Route index element={<Home />} />
-        <Route
-          path="/nuestrosAutos"
-          element={<NuestrosAutos />}
-        >
-          <Route to="detalleAuto/:modelo" element={<DetalleAuto />}/>
+        <Route path="/nuestrosAutos" element={<NuestrosAutos />}>
+          <Route to="/detalleAuto/:modelo" element={<DetalleAuto />}/>
         </Route>
         <Route path="/contacto" element={<Contacto />} />
-        
+        <Route path="/buscador" element={<Buscador />} />
         
         <Route path="*" element={<Navigate replace to='/' />} />
       </Route>

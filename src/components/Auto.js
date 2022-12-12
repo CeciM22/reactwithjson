@@ -25,7 +25,7 @@ const Auto = (props) => {
         <Card style={{ width: "150px" }}>
           <Col>
             <Row className="d-flex justify-content-center">
-              <a href={`detalleAuto/${props.modelo}`}>
+              <a href={`/detalleAuto/${props.modelo}`}>
                 <Card.Img
                   className="maxImg"
                   src={require(`../assets/img/${props.imagen}`)}

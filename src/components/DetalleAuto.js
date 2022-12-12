@@ -6,14 +6,19 @@ import Nav from "react-bootstrap/Nav";
 
 import Button from "react-bootstrap/Button";
 import data from "../autos.json";
-import { Link, Navigate, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet ,useParams} from "react-router-dom";
 import NuestrosAutos from "./NuestrosAutos";
+import Auto from "./Auto";
 
-const DetalleAuto = (props) => {
+const DetalleAuto = () => {
 
-  const parametroModelo = this.props.match.params.modelo;
-  const autoEncontrado = data.filter((auto) => auto.modelo === parametroModelo);
+  const{parametroModelo} = useParams();
+  const auto = data.find((auto)=> auto.modelo === parametroModelo);
+  const {marca,modelo,localidad,imagen,anio,precio,destacado} = auto;
 
+  // const parametroModelo = this.props.match.params.modelo;
+  // const autoEncontrado = data.filter((auto) => auto.modelo === parametroModelo);
+  
   // if (autoEncontrado[0].destacado === "Y") {
   //   this.destacado = <span className="envioGratis">Si</span>;
   // } else {
@@ -28,13 +33,13 @@ const DetalleAuto = (props) => {
           
             <img
               className="d-block mx-auto sizeImg"
-              src={require(`../assets/img/${autoEncontrado[0].imagen}`)}
-              alt="imagen-producto"
+              src={require(`../assets/img/${imagen}`)}
+              alt="imagen-auto"
             ></img>
             
             {/* descripcion */}
             <span className="title">Marca: </span>
-            <span className="descripcion">{autoEncontrado[0].marca}</span>
+            <span>{marca}</span>
           </Col>
           <Col lg="1">
             {/* linea divisoria */}
@@ -45,40 +50,40 @@ const DetalleAuto = (props) => {
               {/*  cantidad vendidos */}
               <Col>
                 <span className="title">Modelo: </span>
-                <span>{autoEncontrado[0].modelo}</span>
+                <span>{modelo}</span>
               </Col>
             </Row>
             <Row>
               {/* instrumento */}
               <Col>
                 <span className="title">Año: </span>
-                <h3 className="instrumento">{autoEncontrado[0].anio}</h3>
+                <h3>{anio}</h3>
               </Col>
             </Row>
             <Row>
               {/*  cantidad vendidos */}
               <Col>
                 <span className="title">Localidad: </span>
-                <span>{autoEncontrado[0].localidad}</span>
+                <span>{localidad}</span>
               </Col>
             </Row>
             <Row>
               <Col>
                 <span className="title">Precio: </span>
-                <h2 className="precio">${autoEncontrado[0].precio}</h2>
+                <h2 className="precio">${precio}</h2>
               </Col>
             </Row>
             <Row>
               {/* marca */}
               <Col>
-                <span className="marca">Marca: {autoEncontrado[0].marca}</span>
+                <span className="marca">Marca: {marca}</span>
               </Col>
             </Row>
             <Row>
               {/* modelo */}
               <Col>
                 <span className="modelo">
-                  Modelo: {autoEncontrado[0].modelo}
+                  Modelo: {modelo}
                 </span>
               </Col>
             </Row>
@@ -86,7 +91,7 @@ const DetalleAuto = (props) => {
               <Col>
                 <span>Destacado: </span>
                 <br></br>
-                <span>{autoEncontrado[0].destacado}</span>
+                <span>{destacado}</span>
               </Col>
             </Row>
             <Outlet></Outlet>

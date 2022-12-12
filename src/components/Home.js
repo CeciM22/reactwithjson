@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Auto from './Auto';
 import data from "../autos.json";
 
-const Home = () => {
+const Home = (props) => {
   
   //const parametroModelo = this.props.match.params.modelo;
   //const autoEncontrado = data.filter(
@@ -35,12 +35,28 @@ const Home = () => {
      
       <Container className="d-flex justify-content-center mt-4">
         <Card style={{ width: "200rem" }}>
-         
+         {/* {props.destacado ==='Y'? data.map(auto=>{return(<Auto key={auto.imagen}
+                  marca={auto.marca}
+                  modelo={auto.modelo}
+                  localidad={auto.localidad}
+                  imagen={auto.imagen}
+                  anio={auto.anio}
+                  precio={auto.precio}
+                  destacado={auto.destacado}></Auto>)})} */}
         </Card>
       </Container>
     
     </div>
+     
   );
 };
 
 export default Home;
+{/* <div className="resultados">
+     {pelis.length === 0 ? 
+    <p className="NoRes">no hay pelis</p>
+    : pelis.map( peli =>{
+        return( 
+        <VistaPeli key={peli.imdbID} id={peli.imdbID} nombre={peli.Title} anio={peli.Year} imagen={peli.Poster} />
+    )})}
+</div> */}
